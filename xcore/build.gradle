@@ -1,0 +1,115 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+
+        versionCode buildConfig.version.code
+        versionName buildConfig.version.name
+
+//        // proguard
+//        proguardFiles getDefaultProguardFile('proguard-android.txt'),
+//                'proguard-rules.pro',
+//                '../proguards/proguard-calligraphy-2.1.0.pro',
+//                '../proguards/proguard-crashlytics-2.pro',
+//                '../proguards/proguard-glide.pro',
+//                '../proguards/proguard-google-play-services.pro',
+//                '../proguards/proguard-rx-java.pro',
+//                '../proguards/proguard-square-okio.pro',
+//                '../proguards/proguard-square-okhttp3.pro',
+//                '../proguards/proguard-square-retrofit2.pro',
+//                '../proguards/proguard-dagger2.pro',
+//                '../proguards/proguard-moshi.pro'
+    }
+
+    buildTypes {
+    }
+
+
+
+
+}
+
+dependencies {
+
+    api deps.kotlin.stdlib.jdk
+    api deps.kotlin.coroutines.jdk
+    api deps.kotlin.coroutines.android
+
+    //dagger
+    api deps.dagger.runtime
+    kapt deps.dagger.compiler
+    api deps.dagger.android.runtime
+    api deps.dagger.android.support
+    kapt deps.dagger.android.proccesor
+
+    api deps.android.arch.lifecycle.extensions
+    kapt deps.android.arch.lifecycle.compiler
+    api deps.android.arch.room.runtime
+    kapt deps.android.arch.room.compiler
+    api deps.android.arch.paging.runtime
+
+    implementation deps.moshi
+    kapt deps['moshi-kotlin-codegen']
+
+    implementation deps.okhttp.client
+    api deps.retrofit.client
+    api deps.retrofit.koroutine
+    api deps.retrofit.converterMoshi
+
+    // timber
+    api deps.timber
+
+    // Views
+
+    api deps.android.support.appCompat
+    api deps.android.support.fragment
+    api deps.android.support.recyclerView
+    api deps.android.support.coreUi
+    api deps.android.support.constraintLayout
+    api deps.android.support.design
+//    api deps.alerter
+
+    api deps.rx.kotlin
+    api deps.rx.android
+    api deps.rx.binding.framework
+    api deps.rx.binding.appcompat
+
+    api deps.android.x.coreKtx
+
+    //annotation
+    api deps.android.support.annotations
+
+    api deps.moshi
+
+
+    debugImplementation deps.okhttp.logging
+    debugImplementation deps.stetho
+    debugImplementation deps['stetho.okhttp']
+
+    debugImplementation deps.leakcanary.debug
+    releaseImplementation deps.leakcanary.release
+
+    api deps.threetenbp
+
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+repositories {
+    mavenCentral()
+}

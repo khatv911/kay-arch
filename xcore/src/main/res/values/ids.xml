@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+
+    <item name="base_content" type="id" />
+
+    <item name="base_recycler_view" type="id" />
+
+
+    <item name="base_refresh_layout" type="id" />
+
+    <item name="fragment_container" type="id" />
+</resources>
