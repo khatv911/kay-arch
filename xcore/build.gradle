@@ -1,4 +1,18 @@
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        // The current version can be found here https://git.io/fNUnx
+        classpath "guru.stefma.bintrayrelease:bintrayrelease:1.0.0"
+    }
+}
+
+
 apply plugin: 'com.android.library'
+apply plugin: "guru.stefma.bintrayrelease"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
@@ -39,6 +53,22 @@ android {
 
 
 
+
+
+
+}
+version = '0.1.0'
+group = "kay.arch"
+publish {
+
+    def artifactProjectID = 'xcore'
+
+    userOrg = 'kay'
+    repoName = 'KayArch'
+
+    artifactId = artifactProjectID
+    desc ='no descipt'
+    website = 'https://github.com/khatv911/kay-arch'
 }
 
 dependencies {
@@ -56,9 +86,9 @@ dependencies {
 
     api deps.android.arch.lifecycle.extensions
     kapt deps.android.arch.lifecycle.compiler
-    api deps.android.arch.room.runtime
-    kapt deps.android.arch.room.compiler
-    api deps.android.arch.paging.runtime
+//    api deps.android.arch.room.runtime
+//    kapt deps.android.arch.room.compiler
+//    api deps.android.arch.paging.runtime
 
     implementation deps.moshi
     kapt deps['moshi-kotlin-codegen']
@@ -81,10 +111,10 @@ dependencies {
     api deps.android.support.design
 //    api deps.alerter
 
-    api deps.rx.kotlin
-    api deps.rx.android
-    api deps.rx.binding.framework
-    api deps.rx.binding.appcompat
+//    api deps.rx.kotlin
+//    api deps.rx.android
+//    api deps.rx.binding.framework
+//    api deps.rx.binding.appcompat
 
     api deps.android.x.coreKtx
 
@@ -103,6 +133,9 @@ dependencies {
 
     api deps.threetenbp
 
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
 }
 
 kotlin {
@@ -110,6 +143,7 @@ kotlin {
         coroutines "enable"
     }
 }
-repositories {
-    mavenCentral()
+
+task dokka(){
+
 }
