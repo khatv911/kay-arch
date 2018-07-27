@@ -1,1 +1,1 @@
-include ':app', ':xcore'
+include ':app', ':xcore', ':appdb'

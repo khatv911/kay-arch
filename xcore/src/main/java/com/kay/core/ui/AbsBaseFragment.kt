@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.ProgressBar
-import androidx.core.view.postDelayed
 import androidx.core.widget.ContentLoadingProgressBar
 import com.kay.core.R
 import com.kay.core.resolver.Resolution
@@ -48,6 +46,8 @@ abstract class AbsBaseFragment : DaggerFragment() {
      * The content view, inflated from a single layout file
      */
     protected lateinit var mContentView: View
+
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -103,32 +103,7 @@ abstract class AbsBaseFragment : DaggerFragment() {
 
     abstract fun getLayoutId(): Int
 
-    /**
-     *
-     */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            parseArguments(it)
-        }
-    }
-
-    /**
-     * Parse arguments, normally
-     */
-    protected open fun parseArguments(arguments: Bundle) {}
-
-    /**
-     *
-     */
-    abstract fun getActionBarTitle(): String
 
 
-    override fun onResume() {
-        super.onResume()
-        if (activity is CanSetTitle) {
-            (activity as CanSetTitle).setTitle(getActionBarTitle())
-        }
-    }
 
 }

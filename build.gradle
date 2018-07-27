@@ -37,7 +37,7 @@ buildscript {
             ],
             'glide'              : '3.7.0',
             'stetho'             : '1.5.0',
-            'objectbox'          : '1.5.0',
+            'objectbox'          : '2.0.0',
             'ktx'                : '1.0.0-alpha1',
             'anko'               : '0.10.5'
 
@@ -200,7 +200,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0-beta04'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-
+        classpath "io.objectbox:objectbox-gradle-plugin:${versions.objectbox}"
 
     }
 }

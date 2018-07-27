@@ -10,7 +10,6 @@ buildscript {
     }
 }
 
-
 apply plugin: 'com.android.library'
 apply plugin: "guru.stefma.bintrayrelease"
 apply plugin: 'kotlin-android'
@@ -31,33 +30,13 @@ android {
 
         versionCode buildConfig.version.code
         versionName buildConfig.version.name
-
-//        // proguard
-//        proguardFiles getDefaultProguardFile('proguard-android.txt'),
-//                'proguard-rules.pro',
-//                '../proguards/proguard-calligraphy-2.1.0.pro',
-//                '../proguards/proguard-crashlytics-2.pro',
-//                '../proguards/proguard-glide.pro',
-//                '../proguards/proguard-google-play-services.pro',
-//                '../proguards/proguard-rx-java.pro',
-//                '../proguards/proguard-square-okio.pro',
-//                '../proguards/proguard-square-okhttp3.pro',
-//                '../proguards/proguard-square-retrofit2.pro',
-//                '../proguards/proguard-dagger2.pro',
-//                '../proguards/proguard-moshi.pro'
     }
 
     buildTypes {
     }
 
-
-
-
-
-
-
 }
-version = '0.1.0'
+version = '1.2'
 group = "kay.arch"
 publish {
 
@@ -109,12 +88,7 @@ dependencies {
     api deps.android.support.coreUi
     api deps.android.support.constraintLayout
     api deps.android.support.design
-//    api deps.alerter
 
-//    api deps.rx.kotlin
-//    api deps.rx.android
-//    api deps.rx.binding.framework
-//    api deps.rx.binding.appcompat
 
     api deps.android.x.coreKtx
 
