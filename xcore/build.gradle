@@ -16,6 +16,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+
     compileSdkVersion buildConfig.compileSdk
 
     compileOptions {
@@ -36,7 +38,7 @@ android {
     }
 
 }
-version = '1.2'
+version = '1.7'
 group = "kay.arch"
 publish {
 
@@ -52,64 +54,59 @@ publish {
 
 dependencies {
 
-    api deps.kotlin.stdlib.jdk
-    api deps.kotlin.coroutines.jdk
-    api deps.kotlin.coroutines.android
+    implementation deps.kotlin.stdlib.jdk
+    implementation deps.kotlin.coroutines.jdk
+    implementation deps.kotlin.coroutines.android
 
     //dagger
-    api deps.dagger.runtime
+    implementation deps.dagger.runtime
     kapt deps.dagger.compiler
-    api deps.dagger.android.runtime
-    api deps.dagger.android.support
+    implementation deps.dagger.android.runtime
+    implementation deps.dagger.android.support
     kapt deps.dagger.android.proccesor
 
-    api deps.android.arch.lifecycle.extensions
+    implementation deps.android.arch.lifecycle.extensions
     kapt deps.android.arch.lifecycle.compiler
-//    api deps.android.arch.room.runtime
-//    kapt deps.android.arch.room.compiler
-//    api deps.android.arch.paging.runtime
 
     implementation deps.moshi
+
     kapt deps['moshi-kotlin-codegen']
 
     implementation deps.okhttp.client
-    api deps.retrofit.client
-    api deps.retrofit.koroutine
-    api deps.retrofit.converterMoshi
+
+    implementation deps.okhttp.logging
+
+    implementation deps.retrofit.client
+
+    implementation deps.retrofit.converterMoshi
+
+    implementation deps.retrofit.koroutine
+
+    implementation deps.threetenbp
 
     // timber
-    api deps.timber
+    implementation deps.timber
+
+    implementation 'kay.arch:errorhandler:1.0'
 
     // Views
 
-    api deps.android.support.appCompat
-    api deps.android.support.fragment
-    api deps.android.support.recyclerView
-    api deps.android.support.coreUi
-    api deps.android.support.constraintLayout
-    api deps.android.support.design
+    implementation deps.android.x.fragment
+    implementation deps.android.x.recyclerView
+    implementation deps.android.x.swiperefreshlayout
 
+    implementation deps.android.ktx.coreKtx
 
-    api deps.android.x.coreKtx
 
     //annotation
-    api deps.android.support.annotations
+    implementation deps.android.x.annotations
 
-    api deps.moshi
-
-
-    debugImplementation deps.okhttp.logging
-    debugImplementation deps.stetho
-    debugImplementation deps['stetho.okhttp']
-
-    debugImplementation deps.leakcanary.debug
-    releaseImplementation deps.leakcanary.release
-
-    api deps.threetenbp
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+
+
 }
 
 kotlin {

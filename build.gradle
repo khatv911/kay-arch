@@ -1,10 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.kotlin_version = '1.2.51'
 
 //    ext.kotlin_version = '1.2.40'
     ext.buildConfig = [
-            'compileSdk': "android-P",
+            'compileSdk': 28,
             'minSdk'    : 21,
             'targetSdk' : 28,
 
@@ -20,7 +21,7 @@ buildscript {
 
     ext.versions = [
             //TODO: versions
-            'supportLibrary'     : '28.0.0-alpha1',
+            'androidX'     : '1.0.0-beta01',
             'kotlin'             : '1.2.51',
             'kotlinCoroutines'   : '0.22.2',
             'kotlinSerialization': '0.4',
@@ -31,7 +32,7 @@ buildscript {
             'rxbinding'          : '2.1.1',
             'moshi'              : '1.6.0',
             'arch'               : [
-                    'extensions': '1.1.1',
+                    'extensions': '2.0.0-alpha1',
                     'room'      : '1.1.1',
                     'paging'    : '1.0.0'
             ],
@@ -80,30 +81,27 @@ buildscript {
                                     'testing' : "android.arch.persistence.room:testing:${versions.arch.room}"
                             ],
                             'lifecycle': [
-                                    'extensions': "android.arch.lifecycle:extensions:${versions.arch.extensions}",
-                                    'compiler'  : "android.arch.lifecycle:compiler:${versions.arch.extensions}"
+                                    'extensions': "androidx.lifecycle:lifecycle-extensions:${versions.arch.extensions}",
+                                    'compiler'  : "androidx.lifecycle:lifecycle-compiler:${versions.arch.extensions}"
                             ],
                             'paging'   : [
                                     'runtime': "android.arch.paging:runtime:${versions.arch.paging}"
                             ]
                     ],
                     //TODO: support
-                    'support': [
-                            'annotations'      : "com.android.support:support-annotations:${versions.supportLibrary}",
-                            'coreUtils'        : "com.android.support:support-core-utils:${versions.supportLibrary}",
-                            'recyclerView'     : "com.android.support:recyclerview-v7:${versions.supportLibrary}",
-                            'customTabs'       : "com.android.support:customtabs:${versions.supportLibrary}",
-                            'design'           : "com.android.support:design:${versions.supportLibrary}",
-                            'constraintLayout' : 'com.android.support.constraint:constraint-layout:1.1.0',
-                            'appCompat'        : "com.android.support:appcompat-v7:${versions.supportLibrary}",
-                            'coreUi'           : "com.android.support:support-core-ui:${versions.supportLibrary}",
-                            'fragment'         : "com.android.support:support-fragment:${versions.supportLibrary}",
-                            'selection'        : "com.android.support:recyclerview-selection:${versions.supportLibrary}",
-                            'viewpager'        : "com.android.support:viewpager:${versions.supportLibrary}",
-                            'coordinatorlayout': "com.android.support:coordinatorlayout:${versions.supportLibrary}",
-                            'drawerlayout'     : "com.android.support:drawerlayout:${versions.supportLibrary}"
+                    'x': [
+                            'annotations'      : "androidx.annotation:annotation:${versions.androidX}",
+                            'recyclerView'     : "androidx.recyclerview:recyclerview:${versions.androidX}",
+                            'customTabs'       : "androidx.browser:browser:${versions.androidX}",
+                            'design'           : "com.google.android.material:material:${versions.androidX}",
+                            'constraintLayout' : 'androidx.constraintlayout:1.2.0',
+                            'appCompat'        : "androidx.appcompat:appcompat:${versions.androidX}",
+                            'fragment'         : "androidx.fragment:fragment:${versions.androidX}",
+                            'viewpager'        : "com.android.support:viewpager:${versions.androidX}",
+                            'coordinatorlayout': "androidx.coordinatorlayout:coordinatorlayout:${versions.androidX}",
+                            'swiperefreshlayout':"androidx.swiperefreshlayout:swiperefreshlayout:${versions.androidX}"
                     ],
-                    'x'      : [
+                    'ktx'      : [
                             'coreKtx': "androidx.core:core-ktx:${versions.ktx}",
                     ],
                     'test'   : [
@@ -122,16 +120,7 @@ buildscript {
                     'converterMoshi': "com.squareup.retrofit2:converter-moshi:${versions.retrofit}",
                     'koroutine'     : "ru.gildor.coroutines:kotlin-coroutines-retrofit:0.11.0"
             ],
-            'rx'                  : [
-                    'java'   : 'io.reactivex.rxjava2:rxjava:2.2.0',
-                    'kotlin' : 'io.reactivex.rxjava2:rxkotlin:2.2.0',
-                    'android': 'io.reactivex.rxjava2:rxandroid:2.0.2',
-                    'binding': [
-                            'framework'   : "com.jakewharton.rxbinding2:rxbinding-kotlin:${versions.rxbinding}",
-                            'appcompat'   : "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:${versions.rxbinding}",
-                            'recyclerview': "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:${versions.rxbinding}",
-                    ],
-            ],
+
             'kotshi'              : [
                     'api'     : "se.ansman.kotshi:api:${versions.kotshi}",
                     'compiler': "se.ansman.kotshi:compiler:${versions.kotshi}",
@@ -175,12 +164,6 @@ buildscript {
             'junit'               : 'junit:junit:4.12',
             'bugsnag'             : 'com.bugsnag:bugsnag-android:4.2.2',
             'alerter'             : 'com.tapadoo.android:alerter:2.0.4',
-            'leakcanary'          :
-                    [
-                            'debug'  : 'com.squareup.leakcanary:leakcanary-android:1.5.4',
-                            'release': 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-                    ]
-            ,
             'scalingLayout'       : "com.github.iammert:ScalingLayout:1.2.1",
             'mpchart': "com.github.PhilJay:MPAndroidChart:v3.0.3"
 
@@ -201,6 +184,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.2.0-beta04'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "io.objectbox:objectbox-gradle-plugin:${versions.objectbox}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
     }
 }
@@ -215,6 +199,10 @@ allprojects {
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
         maven { url "https://jitpack.io" }
+
+        maven {
+            url  "https://kay.bintray.com/KayArch"
+        }
     }
 
     // Force all of the primary support libraries to use the same version.
@@ -222,13 +210,11 @@ allprojects {
         resolutionStrategy {
             eachDependency { details ->
 
-//                if (details.requested.group == 'androidx.recyclerview') {
-//                    details.useVersion 'recyclerview-1.0.0-alpha3'
-//                }
 
-                if (details.requested.group == 'com.android.support') {
-                    details.useVersion versions.supportLibrary
-                }
+
+//                if (details.requested.group == 'com.android.support') {
+//                    details.useVersion versions.supportLibrary
+//                }
                 if (details.requested.group == 'com.squareup.okhttp3') {
                     details.useVersion versions.okhttp
                 }

@@ -1,1 +1,1 @@
-include ':app', ':xcore', ':appdb'
+include ':app', ':xcore', ':appdb', ':errorhandler'

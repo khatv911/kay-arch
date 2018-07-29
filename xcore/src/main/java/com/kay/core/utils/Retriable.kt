@@ -5,6 +5,12 @@ package com.kay.core.utils
  * Profile: https://github.com/khatv911
  * Email: khatv911@gmail.com
  */
+
+/**
+ * Retry
+ */
+typealias Retry = (() -> Any)?
+
 interface Retriable {
     fun retry()
 }

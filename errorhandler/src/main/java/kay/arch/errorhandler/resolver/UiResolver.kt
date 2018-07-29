@@ -1,6 +1,6 @@
-package com.kay.core.resolver
+package kay.arch.errorhandler.resolver
 
-import com.kay.core.R
+import kay.arch.errorhandler.R
 
 
 /**

@@ -3,7 +3,6 @@ package com.kay.core.di
 import android.app.Application
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
-import com.kay.core.enviroments.inject
 import com.kay.core.utils.AccessTokenInterceptor
 import com.kay.core.utils.OffsetDateTimeJsonAdapter
 import com.kay.core.utils.PrefHelper
@@ -14,9 +13,11 @@ import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.threeten.bp.OffsetDateTime
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import timber.log.Timber
 import javax.inject.Singleton
 
 /**
@@ -48,7 +49,9 @@ class CoreModule {
             OkHttpClient.Builder().apply {
                 cache(cache)
                 addInterceptor(AccessTokenInterceptor(prefs))
-                inject()
+                addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
+                    Timber.tag("OkHttp").d(message)
+                }).setLevel(HttpLoggingInterceptor.Level.BODY))
             }.build()
 
 

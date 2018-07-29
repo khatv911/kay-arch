@@ -1,4 +1,4 @@
-package com.kay.core.resolver
+package kay.arch.errorhandler
 
 import retrofit2.HttpException
 

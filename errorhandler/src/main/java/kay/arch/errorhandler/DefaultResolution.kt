@@ -1,6 +1,7 @@
-package com.kay.core.resolver
+package kay.arch.errorhandler
 
-import com.kay.core.R
+import kay.arch.errorhandler.resolver.UiResolver
+
 
 /**
  * Created by Kay Tran on 2/2/18.

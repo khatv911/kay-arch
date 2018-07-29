@@ -24,6 +24,10 @@ inline fun <PersistedData, NetworkResponse : Any>
                                                   networkCall: Call<NetworkResponse>,
                                                   crossinline persistNetworkResult: (NetworkResponse) -> Unit,
                                                   crossinline shouldFetch: (PersistedData?) -> Boolean): LiveData<PersistedData> {
+
+    requestStateEvent.value = null
+    retryEvent.value = null
+
     return object : NetworkBoundResource<PersistedData, NetworkResponse>() {
         override fun loadFromDB(): LiveData<PersistedData> = dbCall
 

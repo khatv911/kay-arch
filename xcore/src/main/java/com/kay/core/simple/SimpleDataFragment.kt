@@ -40,4 +40,6 @@ abstract class SimpleDataFragment<T, VM : SimpleDataModel<T>> : AbsBaseFragment(
     }
 
 
+
+
 }

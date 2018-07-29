@@ -1,6 +1,5 @@
 package kay.arch.objectbox.base
 
-import io.objectbox.annotation.BaseEntity
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 
@@ -13,19 +12,20 @@ import io.objectbox.annotation.Id
 abstract class BaseBox {
 
     @Id
-    var id: Long=0L
+    var doNotUseThisId: Long = 0L
+
     /**
      * Server sync status
      */
-    var syncStatus: Int= SyncStatus.SYNC_SUCCEEDED
+    var syncStatus: Int = SyncStatus.SYNC_SUCCEEDED
     /**
      * last sync utc timestamp
      */
-    var lastSync: Long? =null
+    var lastSync: Long? = null
 
     /**
      * by who?
      */
-    var lastUpdatedBy: String?=null
+    var lastUpdatedBy: String? = null
 
 }

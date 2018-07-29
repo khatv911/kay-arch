@@ -6,6 +6,7 @@ import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.withContext
 import retrofit2.Call
 import ru.gildor.coroutines.retrofit.awaitResult
 import ru.gildor.coroutines.retrofit.getOrThrow
@@ -33,7 +34,7 @@ abstract class NetworkBoundResource<PersistedData, NetworkResponse : Any> {
 
     private fun loadData() {
         val dbSource = loadFromDB()
-        result.addSource(dbSource, { data ->
+        result.addSource(dbSource) { data ->
             if (shouldFetch(data)) {
                 result.removeSource(dbSource)
                 fetchFromNetwork(dbSource)
@@ -41,7 +42,7 @@ abstract class NetworkBoundResource<PersistedData, NetworkResponse : Any> {
                 setValue(data)
                 noNeedFetching()
             }
-        })
+        }
     }
 
     fun asLiveData(): LiveData<PersistedData> {
@@ -59,7 +60,7 @@ abstract class NetworkBoundResource<PersistedData, NetworkResponse : Any> {
      * and [createCall] can be empty
      */
     protected open fun fetchFromNetwork(dbSource: LiveData<PersistedData>) {
-        result.addSource(dbSource, { setValue(it) })
+        result.addSource(dbSource) { setValue(it) }
         launch(UI) {
             try {
                 result.removeSource(dbSource)
@@ -67,14 +68,14 @@ abstract class NetworkBoundResource<PersistedData, NetworkResponse : Any> {
                 val value = networkResult.getOrThrow()
 
                 retry = null
-                async(CommonPool + exceptionThrower) { saveCallResult(value) }.await()
-                result.addSource(loadFromDB(), {
+                withContext(CommonPool + exceptionThrower) { saveCallResult(value) }
+                result.addSource(loadFromDB()) {
                     setValue(it)
-                })
+                }
                 onFetchSuccess()
             } catch (e: Throwable) {
                 retry = { fetchFromNetwork(dbSource) }
-                result.addSource(loadFromDB(), { setValue(it) })
+                result.addSource(loadFromDB()) { setValue(it) }
                 onException(e)
             }
 

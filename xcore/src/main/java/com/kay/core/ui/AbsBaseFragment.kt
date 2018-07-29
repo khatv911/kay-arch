@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.core.widget.ContentLoadingProgressBar
 import com.kay.core.R
-import com.kay.core.resolver.Resolution
-import com.kay.core.utils.CanSetTitle
 import com.kay.core.utils.LoadingState
 import com.kay.core.utils.LoadingState.Companion.NORMAL
 import dagger.android.support.DaggerFragment
+import kay.arch.errorhandler.DefaultResolution
+import kay.arch.errorhandler.Resolution
+import kay.arch.errorhandler.resolver.TimberResolver
+import kay.arch.errorhandler.resolver.ToastyResolver
 
 /**
  * Created by Kay Tran on 2/2/18.
@@ -33,7 +35,10 @@ abstract class AbsBaseFragment : DaggerFragment() {
     /**
      * Override this method to provide proper resolution
      */
-    abstract fun getResolution(): Resolution
+    open fun getResolution(): Resolution = DefaultResolution(mutableListOf()).apply {
+        addResolver(TimberResolver())
+        addResolver(ToastyResolver(this@AbsBaseFragment))
+    }
 
 
     /**
@@ -99,6 +104,8 @@ abstract class AbsBaseFragment : DaggerFragment() {
     open fun onSuccess(message: String?) {
         uiResolution.success(message)
     }
+
+
 
 
     abstract fun getLayoutId(): Int

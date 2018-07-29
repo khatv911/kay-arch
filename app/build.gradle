@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin : 'kotlin-kapt'
+
+apply plugin: 'io.objectbox'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -40,11 +44,16 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':xcore')
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.51"
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation deps.android.x.appCompat
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
 
 
+    implementation deps.objectbox.android
+    implementation deps.objectbox.kotlin
+    kapt deps.objectbox.processor
+
+    implementation project(":appdb")
 }

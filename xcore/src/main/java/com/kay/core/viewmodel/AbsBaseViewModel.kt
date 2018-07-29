@@ -93,9 +93,16 @@ abstract class AbsBaseViewModel : ViewModel() {
 
 
     override fun onCleared() {
-        mRetry = null
         super.onCleared()
+        mRetry = null
     }
+
+
+//    fun tearDown(fragment: AbsBaseFragment){
+//        mLoadingEvent.removeObservers(fragment.viewLifecycleOwner)
+//        mStateEvent.removeObservers(fragment.viewLifecycleOwner)
+//        mRetryEvent.removeObservers(fragment.viewLifecycleOwner)
+//    }
 
     fun setup(fragment: AbsBaseFragment) {
         /**
