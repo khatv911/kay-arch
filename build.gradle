@@ -32,7 +32,7 @@ buildscript {
             'rxbinding'          : '2.1.1',
             'moshi'              : '1.6.0',
             'arch'               : [
-                    'extensions': '2.0.0-alpha1',
+                    'extensions': '2.0.0-beta01',
                     'room'      : '1.1.1',
                     'paging'    : '1.0.0'
             ],
@@ -94,7 +94,7 @@ buildscript {
                             'recyclerView'     : "androidx.recyclerview:recyclerview:${versions.androidX}",
                             'customTabs'       : "androidx.browser:browser:${versions.androidX}",
                             'design'           : "com.google.android.material:material:${versions.androidX}",
-                            'constraintLayout' : 'androidx.constraintlayout:1.2.0',
+                            'constraintLayout' : 'androidx.constraintlayout:constraintlayout:1.1.2',
                             'appCompat'        : "androidx.appcompat:appcompat:${versions.androidX}",
                             'fragment'         : "androidx.fragment:fragment:${versions.androidX}",
                             'viewpager'        : "com.android.support:viewpager:${versions.androidX}",
@@ -205,16 +205,47 @@ allprojects {
         }
     }
 
+//    'annotations'      : "androidx.annotation:annotation:${versions.androidX}",
+//    'recyclerView'     : "androidx.recyclerview:recyclerview:${versions.androidX}",
+//    'customTabs'       : "androidx.browser:browser:${versions.androidX}",
+//    'design'           : "com.google.android.material:material:${versions.androidX}",
+//    'constraintLayout' : 'androidx.constraintlayout:constraintlayout:1.1.2',
+//    'appCompat'        : "androidx.appcompat:appcompat:${versions.androidX}",
+//    'fragment'         : "androidx.fragment:fragment:${versions.androidX}",
+//    'viewpager'        : "com.android.support:viewpager:${versions.androidX}",
+//    'coordinatorlayout': "androidx.coordinatorlayout:coordinatorlayout:${versions.androidX}",
+//    'swiperefreshlayout':"androidx.swiperefreshlayout:swiperefreshlayout:${versions.androidX}"
+
+    def androidxGroups=[
+            "androidx.annotation",
+            "androidx.recyclerview",
+            "androidx.browser",
+            "com.google.android.material",
+            "androidx.appcompat",
+            "androidx.fragment",
+            "androidx.coordinatorlayout",
+            "androidx.swiperefreshlayout"
+    ]
+
+    def archGroups =[ "androidx.lifecycle"]
+
     // Force all of the primary support libraries to use the same version.
     configurations.all {
         resolutionStrategy {
             eachDependency { details ->
 
 
+                if(details.requested.group in androidxGroups){
+                    details.useVersion versions.androidX
+                }
 
-//                if (details.requested.group == 'com.android.support') {
-//                    details.useVersion versions.supportLibrary
-//                }
+                if(details.requested.group in archGroups){
+                    details.useVersion "2.0.0-beta01"
+                }
+
+                if (details.requested.group == 'com.android.support') {
+                    details.useVersion versions.supportLibrary
+                }
                 if (details.requested.group == 'com.squareup.okhttp3') {
                     details.useVersion versions.okhttp
                 }
@@ -225,7 +256,7 @@ allprojects {
                 }
 
                 if (details.requested.name == "kotlin-compiler-embeddable") {
-                    details.useVersion "1.2.50"
+                    details.useVersion "1.2.51"
                 }
             }
         }
