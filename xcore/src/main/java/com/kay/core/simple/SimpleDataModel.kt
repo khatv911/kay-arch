@@ -1,7 +1,6 @@
 package com.kay.core.simple
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
+import android.arch.lifecycle.MediatorLiveData
 import com.kay.core.viewmodel.AbsBaseViewModel
 
 

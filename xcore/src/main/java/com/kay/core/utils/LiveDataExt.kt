@@ -1,9 +1,10 @@
 package com.kay.core.utils
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.Transformations
+import android.arch.lifecycle.LifecycleOwner
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.Transformations
+
 
 /**
  * Created by Kay Tran on 2/2/18.

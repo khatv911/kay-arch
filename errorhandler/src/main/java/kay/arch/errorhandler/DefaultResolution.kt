@@ -8,7 +8,7 @@ import kay.arch.errorhandler.resolver.UiResolver
  * Profile: https://github.com/khatv911
  * Email: khatv911@gmail.com
  */
-class DefaultResolution constructor(private val resolvers: MutableList<UiResolver>) : AbsResolution() {
+open class DefaultResolution constructor(private val resolvers: MutableList<UiResolver>) : AbsResolution() {
 
 
     /**

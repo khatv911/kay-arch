@@ -1,7 +1,9 @@
 package com.kay.core.utils
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import com.kay.core.viewmodel.ViewModelFactory
 
 /**
@@ -12,7 +14,7 @@ import com.kay.core.viewmodel.ViewModelFactory
 
 
 @Suppress("UNCHECKED_CAST")
-fun <T : ViewModel> ViewModelFactory.inject(fragment: androidx.fragment.app.Fragment, _class: Class<T>): T = ViewModelProviders.of(fragment, this).get(_class)
+fun <T : ViewModel> ViewModelFactory.inject(fragment: Fragment, _class: Class<T>): T = ViewModelProviders.of(fragment, this).get(_class)
 
 @Suppress("UNCHECKED_CAST")
-fun <T : ViewModel> ViewModelFactory.inject(fragmentActivity: androidx.fragment.app.FragmentActivity, _class: Class<T>): T = ViewModelProviders.of(fragmentActivity, this).get(_class)
+fun <T : ViewModel> ViewModelFactory.inject(fragmentActivity: FragmentActivity, _class: Class<T>): T = ViewModelProviders.of(fragmentActivity, this).get(_class)

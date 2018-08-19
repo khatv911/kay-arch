@@ -1,7 +1,7 @@
 package kay.arch.errorhandler.resolver
 
+import android.support.v4.app.Fragment
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import es.dmoral.toasty.Toasty
 
 

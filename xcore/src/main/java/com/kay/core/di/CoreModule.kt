@@ -1,8 +1,8 @@
 package com.kay.core.di
 
 import android.app.Application
+import android.arch.lifecycle.ViewModelProvider
 import android.content.SharedPreferences
-import androidx.lifecycle.ViewModelProvider
 import com.kay.core.utils.AccessTokenInterceptor
 import com.kay.core.utils.OffsetDateTimeJsonAdapter
 import com.kay.core.utils.PrefHelper

@@ -1,6 +1,6 @@
 package com.kay.core.viewmodel
 
-import androidx.lifecycle.LifecycleOwner
+import android.arch.lifecycle.LifecycleOwner
 import com.kay.core.utils.LoadingState
 
 /**

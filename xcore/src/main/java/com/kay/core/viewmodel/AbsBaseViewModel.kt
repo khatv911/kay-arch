@@ -1,9 +1,8 @@
 package com.kay.core.viewmodel
 
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import android.arch.lifecycle.MediatorLiveData
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import com.kay.core.ui.AbsBaseFragment
 import com.kay.core.utils.*
 

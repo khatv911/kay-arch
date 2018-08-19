@@ -1,6 +1,6 @@
 package com.kay.core.utils
 
-import androidx.annotation.IntDef
+import android.support.annotation.IntDef
 
 
 /**

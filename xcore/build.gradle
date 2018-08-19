@@ -38,7 +38,7 @@ android {
     }
 
 }
-version = '1.7'
+version = '1.8'
 group = "kay.arch"
 publish {
 
@@ -87,7 +87,7 @@ dependencies {
     // timber
     implementation deps.timber
 
-    implementation 'kay.arch:errorhandler:1.0'
+    implementation 'kay.arch:errorhandler:1.1'
 
     // Views
 
@@ -102,9 +102,9 @@ dependencies {
     implementation deps.android.x.annotations
 
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
 
 
 }

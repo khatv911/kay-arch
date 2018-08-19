@@ -1,8 +1,9 @@
 package com.kay.core.simple
 
 import android.os.Bundle
+import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.RecyclerView
 import android.view.View
-import androidx.core.view.postDelayed
 import com.kay.core.R
 import com.kay.core.utils.LoadingState
 import timber.log.Timber
@@ -21,12 +22,12 @@ abstract class SimpleRecyclerViewFragment<T, VM : SimpleDataModel<T>> : SimpleDa
     /**
      *
      */
-    protected var mSwipeRefreshLayout: androidx.swiperefreshlayout.widget.SwipeRefreshLayout? = null
+    protected var mSwipeRefreshLayout: SwipeRefreshLayout? = null
 
     /**
      *
      */
-    protected lateinit var mRecyclerView: androidx.recyclerview.widget.RecyclerView
+    protected lateinit var mRecyclerView: RecyclerView
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

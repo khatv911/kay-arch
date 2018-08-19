@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     
-    <androidx.core.widget.ContentLoadingProgressBar
+    <android.support.v4.widget.ContentLoadingProgressBar
         android:visibility="gone"
         android:translationZ="50dp"
         android:id="@+id/progress_bar"

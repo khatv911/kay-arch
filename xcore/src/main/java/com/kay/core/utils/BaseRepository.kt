@@ -1,6 +1,6 @@
 package com.kay.core.utils
 
-import androidx.lifecycle.LiveData
+import android.arch.lifecycle.LiveData
 import retrofit2.Call
 
 /**

@@ -1,5 +1,6 @@
 package kay.arch.errorhandler.resolver
 
+import android.support.v4.app.Fragment
 import java.lang.ref.WeakReference
 
 /**
@@ -7,9 +8,9 @@ import java.lang.ref.WeakReference
  * Profile: https://github.com/khatv911
  * Email: khatv911@gmail.com
  */
-abstract class AbsUiResolver constructor(protected val fragmentRef: WeakReference<androidx.fragment.app.Fragment>) : UiResolver {
+abstract class AbsUiResolver constructor(protected val fragmentRef: WeakReference<Fragment>) : UiResolver {
 
-    constructor(fragment: androidx.fragment.app.Fragment) : this(WeakReference(fragment))
+    constructor(fragment: Fragment) : this(WeakReference(fragment))
 
 //    override fun resolveErrorMessage(message: String, retryOption: Pair<Boolean, Int?>) {}
 //
