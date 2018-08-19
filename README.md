@@ -17,7 +17,7 @@ allprojects {
 ## Android MVVM Core
 add this into your module build.gradle
 ```
-implementation 'kay.arch:xcore:1.7'
+implementation 'kay.arch:xcore:1.8'
 ```
 
 ## Objectbox
@@ -29,5 +29,5 @@ implementation 'kay.arch:box:1.4'
 ## ErrorHandler 
 Already included in xcore. But if you want to customize, it's just a piece of cake.
 ```
-implementation "kay.arch:errorhandler:1.0"
+implementation "kay.arch:errorhandler:1.1"
 ```
