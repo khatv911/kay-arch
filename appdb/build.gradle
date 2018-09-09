@@ -41,7 +41,7 @@ publish {
 
     def artifactProjectID = 'box'
 
-    userOrg = 'kay'
+    userOrg = 'kaytran'
     repoName = 'KayArch'
 
     artifactId = artifactProjectID

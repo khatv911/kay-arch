@@ -44,7 +44,7 @@ publish {
 
     def artifactProjectID = 'errorhandler'
 
-    userOrg = 'kay'
+    userOrg = 'kaytran'
     repoName = 'KayArch'
 
     artifactId = artifactProjectID

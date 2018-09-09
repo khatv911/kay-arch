@@ -18,6 +18,11 @@ apply plugin: 'kotlin-kapt'
 android {
 
 
+    lintOptions {
+        abortOnError false
+    }
+
+
     compileSdkVersion buildConfig.compileSdk
 
     compileOptions {
@@ -44,7 +49,7 @@ publish {
 
     def artifactProjectID = 'xcore'
 
-    userOrg = 'kay'
+    userOrg = 'kaytran'
     repoName = 'KayArch'
 
     artifactId = artifactProjectID
@@ -53,6 +58,8 @@ publish {
 }
 
 dependencies {
+
+    implementation project(':errorhandler')
 
     implementation deps.kotlin.stdlib.jdk
     implementation deps.kotlin.coroutines.jdk
@@ -87,7 +94,6 @@ dependencies {
     // timber
     implementation deps.timber
 
-    implementation 'kay.arch:errorhandler:1.1'
 
     // Views
 
